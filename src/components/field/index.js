@@ -1,5 +1,3 @@
-import { useState } from 'React';
-
 function Field({ fieldName, setFieldState }) {
     const handleChange = (e) => {
         const val = e.target.value;
