@@ -1,80 +1,142 @@
-import React, { useMemo } from 'react'
-import { useForm, FieldApi } from '@tanstack/react-form'
+export default function InvoiceForm(props) {
+  console.log('event', props)
+  const { client, setClient } = props;
 
-function FieldInfo({ field }: { field: FieldApi<any, any> }) {
-  return (
-    <>
-      {field.state.meta.touchedError ? (
-        <em>{field.state.meta.touchedError}</em>
-      ) : null
-      }{' '}
-      {field.state.meta.isValidating ? 'Validating...' : null}
-    </>
-  )
-}
+  const handleClient = (evt) => {
+    console.log('EVENT', evt)
+    const cField = evt.target.name;
+    setClient(client => ({
+      ...client,
+      [cField]: evt.target.value
+    }))
+  }
 
-function Form() {
-  const form = useForm({
-    defaultValues: useMemo(
-      () => ({
-        companyInfo: {
-          company: 'zeroSquadron',
-          email: 'billing@zerosquadron.com',
-          phone: '510-269-7324',
-          address: '000 Warfield Ave',
-          city: 'Oakland',
-          state: 'Ca',
-          zip: 94610
-        },
-
-        client: {
-          invNumber: 0,
-          issued: Date,
-          due: Date,
-          name: '',
-          email: '',
-          contact: '',
-          address: '',
-          city: '',
-          state: '',
-          zip: 94612,
-          phonoe: ''
-        },
-
-        lineItems: {
-          item: {
-            name: '',
-            desc: '',
-            price: ''
-          }
-        },
-
-        summary: {
-          notesMessage: '',
-          subtotal: 0,
-          tax: 10.25,
-          total: 0
-        }
-      }),
-      []
-    ),
-    onSubmit: async (values) => {
-      // submit here....\
-      console.log(values)
-    }
-  })
+  const handleDate = (evt) => {
+    const initDate = evt.target.value;
+    setClient(client => ({
+      ...client,
+      date: initDate,
+      dueDate: new Date(initDate.getTime() + 30 * 24 * 60 * 60 * 1000)
+    }))
+  }
 
   return (
     <div>
-      <h1>invoice</h1>
-      <form.Form>
-        <div>
-          <form.Field
-            name="Client Name"
+      <h1>Invoice</h1>
+      <form method="post">
+        <div className="form-group client-info" >
+          <label htmlFor="clientName">
+            <span>Client</span>
+            <input type="text" name="clientName" onChange={handleClient} value={client.name} />
+          </label>
+          <label htmlFor="email">
+            <span>Email</span>
+            <input type="email" name="email" onChange={handleClient} value={client.email} />
+          </label>
+          <label htmlFor="date">
+            <span>Date</span>
+            <input type="date" name="date" onChange={handleDate} value={client.date} />
+          </label>
+          <label htmlFor="dueDate">
+            <span>DueDate</span>
+            <input type="dueDate" name="dueDate" onChange={handleDate} value={client.dueDate} />
+          </label>
         </div>
-      </form.Form>
+      </form>
     </div>
   )
-}
 
-export default Form;
+
+
+  // <div className="invoiceApp stack-large">
+  //   <h1>Invoice App</h1>
+  //   <form>
+  //     <h2 className="label-wrapper">
+  //       <label htmlFor="new-todo-input" className="label__lg">
+  //         What needs to be done?
+  //       </label>
+  //     </h2>
+  //     <input
+  //       type="text"
+  //       id="new-todo-input"
+  //       className="input input__lg"
+  //       name="text"
+  //       autoComplete="off"
+  //     />
+  //     <button type="submit" className="btn btn__primary btn__lg">
+  //       Add
+  //     </button>
+  //   </form>
+  //   <div className="filters btn-group stack-exception">
+  //     <button type="button" className="btn toggle-btn" aria-pressed="true">
+  //       <span className="visually-hidden">Show </span>
+  //       <span>all</span>
+  //       <span className="visually-hidden"> tasks</span>
+  //     </button>
+  //     <button type="button" className="btn toggle-btn" aria-pressed="false">
+  //       <span className="visually-hidden">Show </span>
+  //       <span>Active</span>
+  //       <span className="visually-hidden"> tasks</span>
+  //     </button>
+  //     <button type="button" className="btn toggle-btn" aria-pressed="false">
+  //       <span className="visually-hidden">Show </span>
+  //       <span>Completed</span>
+  //       <span className="visually-hidden"> tasks</span>
+  //     </button>
+  //   </div>
+  //   <h2 id="list-heading">3 tasks remaining</h2>
+  //   <ul
+  //     role="list"
+  //     className="todo-list stack-large stack-exception"
+  //     aria-labelledby="list-heading">
+  //     <li className="todo stack-small">
+  //       <div className="c-cb">
+  //         <input id="todo-0" type="checkbox" defaultChecked={true} />
+  //         <label className="todo-label" htmlFor="todo-0">
+  //           Eat
+  //         </label>
+  //       </div>
+  //       <div className="btn-group">
+  //         <button type="button" className="btn">
+  //           Edit <span className="visually-hidden">Eat</span>
+  //         </button>
+  //         <button type="button" className="btn btn__danger">
+  //           Delete <span className="visually-hidden">Eat</span>
+  //         </button>
+  //       </div>
+  //     </li>
+  //     <li className="todo stack-small">
+  //       <div className="c-cb">
+  //         <input id="todo-1" type="checkbox" />
+  //         <label className="todo-label" htmlFor="todo-1">
+  //           Sleep
+  //         </label>
+  //       </div>
+  //       <div className="btn-group">
+  //         <button type="button" className="btn">
+  //           Edit <span className="visually-hidden">Sleep</span>
+  //         </button>
+  //         <button type="button" className="btn btn__danger">
+  //           Delete <span className="visually-hidden">Sleep</span>
+  //         </button>
+  //       </div>
+  //     </li>
+  //     <li className="todo stack-small">
+  //       <div className="c-cb">
+  //         <input id="todo-2" type="checkbox" />
+  //         <label className="todo-label" htmlFor="todo-2">
+  //           Repeat
+  //         </label>
+  //       </div>
+  //       <div className="btn-group">
+  //         <button type="button" className="btn">
+  //           Edit <span className="visually-hidden">Repeat</span>
+  //         </button>
+  //         <button type="button" className="btn btn__danger">
+  //           Delete <span className="visually-hidden">Repeat</span>
+  //         </button>
+  //       </div>
+  //     </li>
+  //   </ul>
+  // </div>
+}
