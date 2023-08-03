@@ -1,0 +1,30 @@
+.wrapper {
+  border: 1px solid #f00;
+  margin: 8rem auto;
+  width: 90rem;
+}
+
+.wrapper h1 {
+  background: #000;
+  color: #fff;
+  font-size: 4.5rem;
+  font-weight: bold;
+  margin: 0;
+  padding: 5px;
+}
+
+form .form-group {
+  display: flex;
+  margin-left: 1rem;
+}
+
+form input {
+  width: 26rem;
+  height: 2.5rem;
+}
+
+label span {
+  display: block;
+  font-size: 1.8rem;
+  margin-top: 1.8rem;
+}

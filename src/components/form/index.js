@@ -1,10 +1,12 @@
+import './form.css';
+
 export default function InvoiceForm(props) {
   console.log('event', props)
   const { client, setClient } = props;
 
   const handleClient = (evt) => {
     console.log('EVENT', evt)
-    const cField = evt.target.name;
+    const cField = evt.target.name
     setClient(client => ({
       ...client,
       [cField]: evt.target.value
@@ -12,6 +14,7 @@ export default function InvoiceForm(props) {
   }
 
   const handleDate = (evt) => {
+    evt.preventDefault()
     const initDate = evt.target.value;
     setClient(client => ({
       ...client,
@@ -20,19 +23,15 @@ export default function InvoiceForm(props) {
     }))
   }
 
+  const handleSubmit = () => {
+    const url = mongoDB.db
+  }
+
   return (
-    <div>
+    <div className="wrapper">
       <h1>Invoice</h1>
-      <form method="post">
-        <div className="form-group client-info" >
-          <label htmlFor="clientName">
-            <span>Client</span>
-            <input type="text" name="clientName" onChange={handleClient} value={client.name} />
-          </label>
-          <label htmlFor="email">
-            <span>Email</span>
-            <input type="email" name="email" onChange={handleClient} value={client.email} />
-          </label>
+      <form method="post" onSubmit={handleSubmit}>
+        <div className="form-group client-info">
           <label htmlFor="date">
             <span>Date</span>
             <input type="date" name="date" onChange={handleDate} value={client.date} />
@@ -42,6 +41,17 @@ export default function InvoiceForm(props) {
             <input type="dueDate" name="dueDate" onChange={handleDate} value={client.dueDate} />
           </label>
         </div>
+        <div className="form-group client-info" >
+          <label htmlFor="clientName">
+            <span>Client</span>
+            <input type="text" name="clientName" onChange={handleClient} value={client.name} />
+          </label>
+          <label htmlFor="email">
+            <span>Email</span>
+            <input type="email" name="email" onChange={handleClient} value={client.email} />
+          </label>
+        </div>
+
       </form>
     </div>
   )
