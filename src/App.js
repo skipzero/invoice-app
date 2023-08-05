@@ -12,11 +12,12 @@ function App() {
       street: '',
       city: '',
       state: '',
-      zip: 94611
+      zip: 94610
     },
     email: '',
     phone: ''
   })
+
   const [lineItem, setLineItem] = useState({
     description: '',
     quantity: 0,
