@@ -32,6 +32,9 @@ export default function InvoiceForm(props) {
       <h1>Invoice</h1>
       <form method="post" onSubmit={handleSubmit}>
         <div className="form-group client-info">
+          <label for={invoice}>
+            <input type="invoiceNo" read-only id="invoice" />
+          </label>
           <label htmlFor="date">
             <span>Date</span>
             <input type="date" name="date" onChange={handleDate} value={client.date} />
