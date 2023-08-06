@@ -1,0 +1,27 @@
+{
+  "_id": { "$oid": "64c36d1af8320730b79abd36" },
+  "client": "Sample",
+  "address": {
+    "street": "888 warfield",
+    "city": "oakland",
+    "state": "ca",
+    "zip": { "$numberInt": "94612" }
+  },
+  "origin_date": { "$date": { "$numberLong": "1690527600000" } },
+  "due_date": { "$date": { "$numberLong": "1693119600000" } },
+  "line_items": [
+    {
+      "id": { "$numberInt": "1" },
+      "item": "line item name",
+      "quantity": { "$numberInt": "4" },
+      "price": { "$numberDouble": "12.5" }
+    },
+    {
+      "id": { "$numberInt": "2" },
+      "item": "hours",
+      "quantity": { "$numberInt": "40" },
+      "price": { "$numberInt": "66" }
+    }
+  ],
+  "notes": "invoice notes for customer/description of work or whatnot..."
+}

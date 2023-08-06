@@ -54,7 +54,9 @@ export default function InvoiceForm(props) {
             <input type="email" name="email" onChange={handleClient} value={client.email} />
           </label>
         </div>
+        <div id="customer-lk">
 
+        </div>
       </form>
     </div>
   )
