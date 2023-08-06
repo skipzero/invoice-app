@@ -19,7 +19,7 @@ export default function InvoiceForm(props) {
     setClient(client => ({
       ...client,
       date: initDate,
-      dueDate: new Date(new Date('2023-12-31').getTime() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]
+      dueDate: new Date(new Date('2023-12-31').getTime() + 2629800000).toISOString().split('T')[0]
     }))
   }
 
