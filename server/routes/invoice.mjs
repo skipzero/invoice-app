@@ -68,9 +68,12 @@ router.patch(':/id', async (req, res) => {
       "origin_date": origin_date,
       "due_date": due_date,
       "line_items": line_items,
-      "notes": note
+      "notes": notes
     }
   }
+  let collection = await db.collection('invoice');
+  let result = await collection.updateOne((query, updates))
+  res.send(result).status(200)
 })
 
 //delete invoice
