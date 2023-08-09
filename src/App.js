@@ -4,10 +4,12 @@ import './App.css';
 
 function App() {
 
+
   const [client, setClient] = useState({
+    invoice: 2123,
     clientName: '',
     date: '',
-    dueDate: '',
+    due: '',
     address: {
       street: '',
       city: '',
@@ -24,12 +26,6 @@ function App() {
     price: 0,
     notes: ''
   })
-  // const initDate = () => new Date().toString().slice(1, 4);
-
-  // setClient(client => ({
-  //   ...client,
-  //   date: initDate()
-  // }))
 
   return (
     <div>

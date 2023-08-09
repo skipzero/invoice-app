@@ -1,16 +1,18 @@
-function Field({ fieldName, setFieldState }) {
-    const handleChange = (e) => {
-        const val = e.target.value;
-        setFieldState(val)
-    }
+import './field.css'
 
-    return (
-        <div>
-            <label for={fieldName}>
-                <input name={fieldName} type="text" id={fieldName} onChange={handleChange} />
-            </label>
-        </div>
-    );
+function Field({ fieldName, fieldState, handleClient }) {
+  console.log('field--', { fieldName, fieldState, handleClient })
+
+  return (
+    <>
+      <label htmlFor={fieldName}>
+        <span>
+          {   fieldName.toUpperCase() }
+        </span>
+        <input type="text" id={fieldName} onChange={handleClient} value={fieldState} name={fieldName} />
+      </label>
+    </>
+  );
 };
 
 export default Field;

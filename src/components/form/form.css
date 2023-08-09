@@ -15,16 +15,11 @@
 
 form .form-group {
   display: flex;
-  margin-left: 1rem;
+  justify-content: space-around;
+  margin: 3rem 1rem;
 }
 
 form input {
   width: 26rem;
   height: 2.5rem;
-}
-
-label span {
-  display: block;
-  font-size: 1.8rem;
-  margin-top: 1.8rem;
 }
