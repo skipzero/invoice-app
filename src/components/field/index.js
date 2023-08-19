@@ -5,14 +5,14 @@ function Field({ fieldName, fieldState, handleClient }) {
 
   return (
     <>
-      <label htmlFor={fieldName}>
+      <label htmlFor={fieldName} className="control-label" >
         <span>
           {   fieldName.toUpperCase() }
         </span>
-        <input type="text" id={fieldName} onChange={handleClient} value={fieldState} name={fieldName} />
+        <input type="text" id={fieldName} onChange={handleClient} value={fieldState} name={fieldName} className="form-control "/>
       </label>
     </>
   );
-};
+};  
 
 export default Field;

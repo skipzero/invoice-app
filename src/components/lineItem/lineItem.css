@@ -1,0 +1,39 @@
+.line-item {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.line-item input {
+    align-self: flex-start;
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+}
+
+.line-item input.quantity {
+    flex-shrink: 1.75;
+}
+
+.line-item input.title {
+    flex-grow: 1;
+}
+
+.line-item input.desc {
+    flex-grow: 1;
+}
+
+.line-item input.amount {
+    flex-shrink:1.75;
+}
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 1.5;
+}
+
+.button-group button {
+    font-weight: bold;
+    height: 1.5rem;
+    width: 1.5rem;
+}

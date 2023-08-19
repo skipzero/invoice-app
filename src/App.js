@@ -3,10 +3,8 @@ import InvoiceForm from './components/form';
 import './App.css';
 
 function App() {
-
-
   const [client, setClient] = useState({
-    invoice: 2123,
+    invoice: 1312,
     clientName: '',
     date: '',
     due: '',
@@ -17,20 +15,26 @@ function App() {
       zip: 94610
     },
     email: '',
-    phone: ''
+    phone: '',
+    notes: ''
   })
 
   const [lineItem, setLineItem] = useState({
-    description: '',
     quantity: 0,
-    price: 0,
-    notes: ''
+    title: '',
+    desc: '',
+    price: 0
   })
 
   return (
     <div>
       App Test
-      <InvoiceForm client={client} setClient={setClient} />
+      <InvoiceForm 
+        client={client} 
+        setClient={setClient} 
+        lineItem={lineItem} 
+        setLineItem={setLineItem} 
+      />
     </div>
   );
 }
