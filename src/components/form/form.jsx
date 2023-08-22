@@ -24,7 +24,7 @@ async function onSubmit(e) {
     headera: {
       'Content-type': 'application/json'
     },
-    body: JSON.stringify(invoice);
+    body: JSON.stringify(invoice)
   })
     .catch(err => {
       console.error(`ERROR: ${err}`)

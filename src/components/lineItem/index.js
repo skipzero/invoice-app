@@ -10,7 +10,7 @@ export default function LineItem (client) {
       <input type="text" value={client.desc} handleClient={handleClient} className="form-control desc" placeholder="description" />
       <input type="number" value={client.price} handleClient={handleClient} className="form-control amount" />
       <div className="button-group" >
-        <button type="button">
+        <button type="button" className="remove">
           X
         </button>
       </div>

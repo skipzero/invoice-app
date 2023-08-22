@@ -7,7 +7,7 @@ function Field({ fieldName, fieldState, handleClient }) {
     <>
       <label htmlFor={fieldName} className="control-label" >
         <span>
-          {   fieldName.toUpperCase() }
+          { fieldName.toUpperCase() }
         </span>
         <input type="text" id={fieldName} onChange={handleClient} value={fieldState} name={fieldName} className="form-control "/>
       </label>

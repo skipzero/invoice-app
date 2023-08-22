@@ -17,11 +17,14 @@ export default function InvoiceForm({ client, setClient, lineItem, setLineItem }
 
   const handleDate = (evt) => {
     // evt.preventDefault()
-    const initDate = evt.target.value;
+    const today = new Date(evt.target.value);
+    const future = today.getDate() + 30;
+    const due = today.setDate(future)
+
     setClient(client => ({
       ...client,
-      date: initDate,
-      due: new Date(new Date(client.date).getTime() + 2629800000).toISOString().split('T')[0]
+      date: today,
+      due: due
     }))
   }
   const handleSubmit = () => {
@@ -34,12 +37,13 @@ export default function InvoiceForm({ client, setClient, lineItem, setLineItem }
       <form method="post" onSubmit={handleSubmit} className="form-vertical">
         <div className="control-group client-info">
           <Field fieldName="invoice" handleClient={handleClient} value={client.invoice}/> 
-          <Field fieldName="date" handleClient={handleDate} value={client.due}/>
-          <Field fieldName="due" /> 
+          <input type="date" htmlName="date" onChange={handleDate} value={client.date}/>
+          <Field fieldName="due" value={client.due} /> 
         </div>
         <div className="control-group client-info" >
           <div className="client form-group" >
             <Field fieldName="client" handleClient={handleClient} value={client.client} />
+            <Field fieldName="email" handleClient={handleClient} value={client.email} />
           </div>
           <div className="control-group address">
             <Field fieldName="street" handleClient={handleClient} value={client.street} />

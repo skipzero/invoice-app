@@ -15,7 +15,7 @@
 
 form .form-group {
   display: flex;
-  justify-content: space-around;
+  /* justify-content: space-around; */
   margin: 3rem 1rem;
 }
 
