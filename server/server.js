@@ -1,8 +1,14 @@
 import express from 'express';
 import cors from 'cors';
+import { config} from ("dotenv")
+import { executeInvoiceOperations } from './invoiceCrus.js';
 
+config();
+console.log('PROCESS!!!', process.env)
 
-const PORT = process.env.PORT || 5150;
+await executeInvoiceOperations();
+
+const PORT = process.env.PORT || 3000;
 const app = express();
 
 app.use(cors());

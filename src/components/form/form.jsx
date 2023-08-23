@@ -21,7 +21,7 @@ async function onSubmit(e) {
 
   await fetch('http://localhost:5150/invoice', {
     method: 'POST',
-    headera: {
+    headers: {
       'Content-type': 'application/json'
     },
     body: JSON.stringify(invoice)

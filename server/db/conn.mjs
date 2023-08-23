@@ -1,6 +1,6 @@
 import { MongoClient } from 'mongodb';
 
-const connectionStr = process.env.ATLAS_DB || "";
+const mongoPass = process.env.MONGO_PASS || "";
 const client = new MongoClient(connectionStr);
 
 let conn;

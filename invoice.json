@@ -1,26 +1,53 @@
 {
-  "_id": { "$oid": "64c36d1af8320730b79abd36" },
+  "_id": {
+    "$oid": "64c36d1af8320730b79abd36"
+  },
+  "invoice": {
+    "$numberInt": "0231"
+  },
+
+  "origin_date": {
+    "$date": {
+      "$numberLong": "1690527600000"
+    }
+  },
+  "due_date": {
+    "$date": {
+      "$numberLong": "1693119600000"
+    }
+  },
   "client": "Sample",
   "address": {
     "street": "888 warfield",
     "city": "oakland",
     "state": "ca",
-    "zip": { "$numberInt": "94612" }
+    "zip": "94612"
   },
-  "origin_date": { "$date": { "$numberLong": "1690527600000" } },
-  "due_date": { "$date": { "$numberLong": "1693119600000" } },
   "line_items": [
     {
-      "id": { "$numberInt": "1" },
+      "id": {
+        "$numberInt": "1"
+      },
+      "quantity": {
+        "$numberInt": "4"
+      },
       "item": "line item name",
-      "quantity": { "$numberInt": "4" },
-      "price": { "$numberDouble": "12.5" }
+      "description": "a little description about the item...",
+      "price": {
+        "$numberDouble": "12.5"
+      }
     },
     {
-      "id": { "$numberInt": "2" },
+      "id": {
+        "$numberInt": "2"
+      },
       "item": "hours",
-      "quantity": { "$numberInt": "40" },
-      "price": { "$numberInt": "66" }
+      "quantity": {
+        "$numberInt": "40"
+      },
+      "price": {
+        "$numberInt": "66"
+      }
     }
   ],
   "notes": "invoice notes for customer/description of work or whatnot..."

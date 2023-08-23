@@ -1,14 +1,14 @@
 .line-item {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
+  display: flex;
+  width: 100%;
 }
 
 .line-item input,
-.line-item button {
-    align-self: flex-start;
+.line-item button,
+.line-item div {
     font-weight: bold;
     height: 3rem;
+    justify-content: space-around;
 }
 
 .line-item button {
@@ -22,28 +22,5 @@
 
 .line-item input[type=number] {
   -moz-appearance: textfield;
-}
-
-
-
-.line-item input.quantity {
-    flex-shrink: 1.75;
-}
-
-.line-item input.title {
-    flex-grow: 1;
-}
-
-.line-item input.desc {
-    flex-grow: 1;
-}
-
-.line-item input.amount {
-    flex-shrink: 1.6;
-}
-
-.button-group {
-    display: flex;
-    flex-direction: column;
-    flex-shrink: 1.5;
+  appearance: textfield;
 }

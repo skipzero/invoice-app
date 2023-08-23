@@ -1,8 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import InvoiceForm from './components/form';
+
 import './App.css';
 
 function App() {
+
+  useEffect(() => {
+    const fetchData = async () => {
+
+    }
+  })
+
   const [client, setClient] = useState({
     invoice: 1312,
     clientName: '',
@@ -29,11 +37,11 @@ function App() {
   return (
     <div>
       App Test
-      <InvoiceForm 
-        client={client} 
-        setClient={setClient} 
-        lineItem={lineItem} 
-        setLineItem={setLineItem} 
+      <InvoiceForm
+        client={client}
+        setClient={setClient}
+        lineItem={lineItem}
+        setLineItem={setLineItem}
       />
     </div>
   );
