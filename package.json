@@ -2,6 +2,7 @@
   "name": "invoice",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.4.2",
     "@types/node": "^20.4.8",
@@ -22,7 +23,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "backend": "node ./server/server.js"
   },
   "eslintConfig": {
     "extends": [
