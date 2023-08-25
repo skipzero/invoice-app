@@ -1,6 +1,6 @@
 import { MongoClient } from 'mongodb';
 
-const mongoPass = process.env.MONGO_PASS || "";
+const mongoPass = process.env.DB_URL || "";
 const client = new MongoClient(connectionStr);
 
 let conn;
