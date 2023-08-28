@@ -1,7 +1,11 @@
 import { MongoClient } from 'mongodb';
 
-const mongoPass = process.env.DB_URL || "";
-const client = new MongoClient(connectionStr);
+// import dotenv from 'dotenv';
+// dotenv.config();
+
+const connectionString = process.env.DB_URI;
+
+const client = new MongoClient(connectionString);
 
 let conn;
 try {
@@ -10,5 +14,5 @@ try {
   console.error(e)
 }
 
-let db = conn.db('FSClusterZed');
+let db = conn.db('invoices');
 export default db;

@@ -1,13 +1,15 @@
-import { Router } from 'express';
-import db from '../db/invoice.mjs';
+import express from 'express';
+import db from '../db/conn.js';
 import { ObjectId } from 'mongodb';
 
-const router = Router();
+const router = express.Router();
 
 // collection of results
 router.get('/', async (req, res) => {
-  let collection = await db.collection('invoices');
+  let collection = await db.collection('invoice');
+  console.log('collections', collection)
   let results = await collection.find({}).toArray();
+  console.log('result', results)
   res.send(results).status(200)
 });
 
@@ -37,8 +39,8 @@ router.post('/', async (req, res) => {
   let newInvoice = {
     "client": client,
     "address": address,
-    "origin_date": origin_date,
-    "due_date": due_date,
+    "origin_date": new Date(origin_date),
+    "due_date": new Date(due_date),
     "line_items": line_items,
     "notes": notes
   }
@@ -48,7 +50,7 @@ router.post('/', async (req, res) => {
   res.send(result).status(204);
 })
 
-// Update invioce
+// Update invoice
 router.patch(':/id', async (req, res) => {
   const {
     client,
@@ -65,8 +67,8 @@ router.patch(':/id', async (req, res) => {
     $set: {
       "client": client,
       "address": address,
-      "origin_date": origin_date,
-      "due_date": due_date,
+      "origin_date": new Date(origin_date),
+      "due_date": new Date(due_date),
       "line_items": line_items,
       "notes": notes
     }
