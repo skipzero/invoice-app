@@ -3,7 +3,7 @@ import cors from 'cors';
 
 import './loadEnvVars.js';
 
-import invoices from './routes/invoices.js'
+import invoices from './routes/index.js'
 
 const PORT = process.env.PORT || 3000;
 const app = express();

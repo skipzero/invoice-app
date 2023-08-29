@@ -9,7 +9,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 // Import your router and any other dependencies here
-import router from '../server/routes/invoices.js'; // Update with the actual path
+import router from '../server/routes/index.js'; // Update with the actual path
 
 const app = express();
 app.use(express.json());
