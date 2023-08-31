@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import InvoiceForm from './components/form';
+import InvoiceForm from './components/form/index.js';
 
 import './App.css';
 

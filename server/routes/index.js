@@ -5,14 +5,14 @@ import {
   createInvoice,
   updateInvoice,
   deleteInvoice,
-  getInvoiceByUser
+  // getInvoiceByUser
 } from 'controllers';
 
 const router = express.Router();
 
 router.get('/:id', getInvoice);
 router.get('/', getInvoices);
-router.get('/', getInvoiceByUser);
+// router.get('/:user', getInvoiceByUser);
 router.post('/', createInvoice);
 router.patch('/:id', updateInvoice);
 router.delete('/:id', deleteInvoice);

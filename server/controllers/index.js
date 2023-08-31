@@ -20,7 +20,7 @@ export const getInvoiceByUser = async (res, res) => {
 export const getInvoices = async (req, res) => {
 
   try {
-    const allInvoices = await InvoiceModel.find({}).sort({_id:-1})
+    const allInvoices = await InvoiceModel.find().sort({_id:-1})
 
     res.status(200).json(allInvoices)
   } catch (error) {
@@ -28,7 +28,7 @@ export const getInvoices = async (req, res) => {
   }
 }
 
-export const getInvoice = await (req, res) => {
+export const getInvoice = async (req, res) => {
   const { id } = req.params;
 
   try {

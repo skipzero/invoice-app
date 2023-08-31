@@ -1,43 +1,33 @@
-import './lineItem.css';
-
-export default function LineItem (client) {
-  const {handleClient, } = client;
+import "./lineItem.css";
+import { MDBRow, MDBCol } from "mdb-react-ui-kit";
+export default function LineItem(client) {
+  const { handleClient, quantity, title, description, price } = client;
 
   return (
-    <>
-    <div className="control-group line-item">
-      <div className="col-md-1">
-        quantity
-      </div>
-      <div className="col-md-3">
-        title
-      </div>
-      <div className="col-md-7">
-        description
-      </div>
-      <div className="col-md-1">
-        price
-      </div>
-    </div>
-    <div className="control-group line-item">
-      <div className="col-md-1">
-        <input type="number" value={client.quantity} handleClient={handleClient} className="form-control quantity" />
-      </div>
-      <div className="col-md-3" >
-        <input type="text" value={client.title} handleClient={handleClient} className="form-control title" placeholder="title"/>
-      </div>
-      <div className="col-md-6">
-        <input type="text" value={client.desc} handleClient={handleClient} className="form-control desc" placeholder="description" />
-      </div>
-      <div className="col-md-1">
-        <input type="number" value={client.price} handleClient={handleClient} className="form-control amount" />
-      </div>
-      <div className="button-group" >
-        <button type="button">
+    <MDBRow>
+      <MDBCol md="1">
+        <label htmlFor="quantity" className="form-label">
+          quantity
+        </label>
+        <input type="number" value={quantity} handleClient={handleClient} id="quantity" className="form-control" />
+      </MDBCol>
+      <MDBCol md="8">
+        <label htmlFor="description" className="form-label">
+          description
+        </label>
+        <input type="text" value={description} handleClient={handleClient} id="description" className="form-control desc" />
+      </MDBCol>
+      <MDBCol md="2">
+        <label htmlFor="price" className="form-label">
+          price
+        </label>
+        <input type="number" value={price} handleClient={handleClient} id="price" className="form-control amount" />
+      </MDBCol>
+      <MDBCol md="1">
+        <button type="button" className="form-control remove">
           X
         </button>
-      </div>
-    </div>
-    </>
-  )
+      </MDBCol>
+    </MDBRow>
+  );
 }

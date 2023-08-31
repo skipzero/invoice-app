@@ -1,25 +1,19 @@
+form {
+  margin-top: 2rem;
+}
+
 .wrapper {
   border: 1px solid #f00;
   margin: 8rem auto;
   width: 90rem;
 }
 
-.wrapper h1 {
+.header {
   background: #000;
   color: #fff;
   font-size: 4.5rem;
   font-weight: bold;
   margin: 0;
   padding: 5px;
-}
-
-form .form-group {
-  display: flex;
-  /* justify-content: space-around; */
-  margin: 3rem 1rem;
-}
-
-form input {
-  width: 22rem;
-  height: 2.5rem;
+  text-align: center;
 }
