@@ -10,7 +10,9 @@ html {
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
+label {
+  font-size: 2rem;
+}
 .App-header {
   align-items: center;
   background-color: #000;

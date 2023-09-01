@@ -15,6 +15,10 @@ export default function InvoiceForm({ client, setClient, lineItem, setLineItem }
     }));
   };
 
+  const handleLineItem = (evt) => {
+    // const {}
+  };
+
   const handleDate = (evt) => {
     // evt.preventDefault()
     const today = new Date(evt.target.value);
@@ -62,7 +66,7 @@ export default function InvoiceForm({ client, setClient, lineItem, setLineItem }
             </div>
           </MDBRow>
           <MDBRow>
-            <LineItem handleClient={handleClient} title="title" desc="description" quantity="quantity" price="price" />
+            <LineItem handleClient={handleClient} lineProps={lineItem} />
           </MDBRow>
           <div id="customer-lk"></div>
         </form>
