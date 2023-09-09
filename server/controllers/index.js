@@ -1,43 +1,42 @@
-import express from 'express';
-import mongoose from 'mongoose';
+import express from "express";
+import mongoose from "mongoose";
 
-import InvoiceModel from '../models'
+import InvoiceModel from "../models";
 
 // Get Invoice by user
-export const getInvoiceByUser = async (res, res) => {
-  const {userQuery} = rew.query;
+export const getInvoiceByClient = async (res, res) => {
+  const { client } = rew.query;
 
   try {
-    const invoice = await InvoiceModel.find({ creator: searchQuery });
+    const invoice = await InvoiceModel.find({ client: client });
 
-    res.status(200).json({ data: invoices })
+    res.status(200).json({ data: invoice });
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
-}
+};
 
 // Get All Invoices
 export const getInvoices = async (req, res) => {
-
   try {
-    const allInvoices = await InvoiceModel.find().sort({_id:-1})
+    const allInvoices = await InvoiceModel.find().sort({ _id: -1 });
 
-    res.status(200).json(allInvoices)
+    res.status(200).json(allInvoices);
   } catch (error) {
-    res.status(409).json({error: error.message})
+    res.status(409).json({ message: error.message });
   }
-}
+};
 
 export const getInvoice = async (req, res) => {
   const { id } = req.params;
 
   try {
     const invoice = await InvoiceModel.findById(id);
-    res.status(200).json(invoice);
+    res.status(200).json({ data: invoice });
   } catch (error) {
-    res.status(409).json({ message: error.message})
+    res.status(409).json({ message: error.message });
   }
-}
+};
 
 // Create new Invoice
 export const createInvoice = async (req, res) => {
@@ -48,17 +47,17 @@ export const createInvoice = async (req, res) => {
     await newInvoice.save();
     res.status(201).json(newInvoice);
   } catch (error) {
-    res.status(409).json({message: error.message});
+    res.status(409).json({ message: error.message });
   }
-}
+};
 
 // Update Invoice
 export const updateInvoice = async (req, res) => {
   const { id: _id } = req.params;
   const invoice = req.body;
 
-  if (!mongoose.Types.ObjectId.isValid(_id)) return readdirSync.status(404).send('No invoice with that id')
-  const updatedInvoice = await InvoiceModel.findByIdAndUpdate(_id, {...invoice, _id}, {new: true})
+  if (!mongoose.Types.ObjectId.isValid(_id)) return readdirSync.status(404).send("No invoice with that id");
+  const updatedInvoice = await InvoiceModel.findByIdAndUpdate(_id, { ...invoice, _id }, { new: true });
 
-  res.json(updatedInvoice)
-}
+  res.json(updatedInvoice);
+};

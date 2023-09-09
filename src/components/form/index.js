@@ -1,9 +1,10 @@
 import Field from "../field/index.js";
-import LineItem from "../lineItem/index.js";
+import LineItem from "../lineItems/index.js";
+import toast, { Toaster } from "react-hot-toast";
 import { MDBRow, MDBCol, MDBContainer } from "mdb-react-ui-kit";
 import "./form.css";
 
-export default function InvoiceForm({ client, setClient, lineItem, setLineItem }) {
+export default function InvoiceForm({ client, setClient, lineItems, setLineItems }) {
   console.log("event-form", client);
 
   const handleClient = (evt) => {
@@ -13,6 +14,9 @@ export default function InvoiceForm({ client, setClient, lineItem, setLineItem }
       ...client,
       [cField]: evt.target.value,
     }));
+  };
+  const notify = () => {
+    toast.success("this ia a toast message", "icon-success");
   };
 
   const handleLineItem = (evt) => {
@@ -31,7 +35,10 @@ export default function InvoiceForm({ client, setClient, lineItem, setLineItem }
       due: due,
     }));
   };
-  const handleSubmit = () => {};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    notify();
+  };
 
   return (
     <MDBContainer>
@@ -40,35 +47,64 @@ export default function InvoiceForm({ client, setClient, lineItem, setLineItem }
           <span>Invoice</span>
         </MDBRow>
         <form method="post" onSubmit={handleSubmit} className="form-vertical">
+          <Toaster
+            toastOptions={{
+              style: {
+                fontSize: "2.4rem",
+                fontWeight: "bold",
+              },
+            }}
+          />
           <MDBRow>
             <MDBCol md="1">
               <Field fieldName="invoice" handleClient={handleClient} value={client.invoice} />
             </MDBCol>
+            <MDBCol md="9"></MDBCol>
             <MDBCol md="1" className="ms-auto">
               <Field fieldName="date" onChange={handleDate} value={client.date} />
+            </MDBCol>
+            <MDBCol md="1" className="ms-auto">
               <Field fieldName="due" value={client.due} />
             </MDBCol>
           </MDBRow>
           <MDBRow>
-            <MDBCol md="8">
+            <MDBCol md="4">
               <Field fieldName="client" handleClient={handleClient} value={client.client} />
             </MDBCol>
             <MDBCol md="4">
               <Field fieldName="email" handleClient={handleClient} value={client.email} />
             </MDBCol>
+            <MDBCol md="4">
+              <Field fieldName="tel" handleClient={handleClient} value={client.phone} />
+            </MDBCol>
           </MDBRow>
           <MDBRow>
             <div className="control-group address row">
               <Field fieldName="street" handleClient={handleClient} value={client.street} />
-              <Field fieldName="city" handleClient={handleClient} value={client.city} />
-              <Field fieldName="state" handleClient={handleClient} value={client.state} />
-              <Field fieldName="zip" handleClient={handleClient} value={client.zip} />
+              <MDBCol md="6">
+                <Field fieldName="city" handleClient={handleClient} value={client.city} />
+              </MDBCol>
+              <MDBCol md="4">
+                <Field fieldName="state" handleClient={handleClient} value={client.state} />
+              </MDBCol>
+              <MDBCol md="2">
+                <Field fieldName="zip" handleClient={handleClient} value={client.zip} />
+              </MDBCol>
             </div>
           </MDBRow>
           <MDBRow>
-            <LineItem handleClient={handleClient} lineProps={lineItem} />
+            {lineItems?.map((item) => {
+              const { description, quantity, price } = item;
+              return (
+                <>
+                  <LineItem handleLineItem={handleClient} price={price} description={description} quantity={quantity} />
+                </>
+              );
+            })}
           </MDBRow>
-          <div id="customer-lk"></div>
+          <div id="customer-lk">
+            <button value="Add Item"></button>
+          </div>
         </form>
       </MDBCol>
     </MDBContainer>

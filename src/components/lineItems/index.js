@@ -1,7 +1,7 @@
 import "./lineItem.css";
 import { MDBRow, MDBCol } from "mdb-react-ui-kit";
 
-export default function LineItem(lineClient) {
+export default function LineItems(lineClient) {
   console.log("LINE+++", lineClient);
   const { handleClient, lineProps } = lineClient;
   const { quantity, price, description } = lineProps;
