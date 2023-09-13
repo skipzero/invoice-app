@@ -12,6 +12,7 @@ export const getInvoiceByClient = async (req, res) => {
 
     res.status(200).json({ data: invoice });
   } catch (error) {
+    toast.error(`Error: ${error}`);
     res.status(404).json({ message: error.message });
   }
 };
@@ -23,6 +24,7 @@ export const getInvoices = async (req, res) => {
 
     res.status(200).json(allInvoices);
   } catch (error) {
+    toast.error(`Error: ${error}`);
     res.status(409).json({ message: error.message });
   }
 };
@@ -34,6 +36,7 @@ export const getInvoice = async (req, res) => {
     const invoice = await InvoiceModel.findById(id);
     res.status(200).json({ data: invoice });
   } catch (error) {
+    toast.error(`Error: ${error}`);
     res.status(409).json({ message: error.message });
   }
 };
@@ -47,6 +50,7 @@ export const createInvoice = async (req, res) => {
     await newInvoice.save();
     res.status(201).json(newInvoice);
   } catch (error) {
+    toast.error(`Error: ${error}`);
     res.status(409).json({ message: error.message });
   }
 };
@@ -56,7 +60,10 @@ export const updateInvoice = async (req, res) => {
   const { id: _id } = req.params;
   const invoice = req.body;
 
-  if (!mongoose.Types.ObjectId.isValid(_id)) return readdirSync.status(404).send("No invoice with that id");
+  if (!mongoose.Types.ObjectId.isValid(_id)) {
+    toast.error(`Error: ${error}`);
+    return readdirSync.status(404).send("No invoice with that id");
+  }
   const updatedInvoice = await InvoiceModel.findByIdAndUpdate(_id, { ...invoice, _id }, { new: true });
 
   res.json(updatedInvoice);

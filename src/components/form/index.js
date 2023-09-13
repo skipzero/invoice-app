@@ -19,10 +19,6 @@ export default function InvoiceForm({ client, setClient, lineItems, setLineItems
     toast.success("this ia a toast message", "icon-success");
   };
 
-  const addLineItem = () => {
-    setLineItems((lineItems) => [...lineItems, new LineItem()]);
-  };
-
   const handleLineItem = (evt) => {
     // const {}
   };
@@ -97,14 +93,7 @@ export default function InvoiceForm({ client, setClient, lineItems, setLineItems
             </div>
           </MDBRow>
           <MDBRow>
-            {lineItems?.map((item) => {
-              const { description, quantity, price } = item;
-              return (
-                <>
-                  <LineItem handleLineItem={handleClient} price={price} description={description} quantity={quantity} />
-                </>
-              );
-            })}
+            <LineItems />
           </MDBRow>
           <div id="customer-lk">
             <button value="Add Item"></button>

@@ -1,16 +1,26 @@
+import toast, { Toaster } from "react-hot-toast";
 import React, { useState, useEffect } from "react";
 import InvoiceForm from "./components/form/index.js";
 
 import "./App.css";
 
 function App() {
+  const [data, setData] = useState([]);
   useEffect(() => {
-    const response = fetch("/getLastInvoice");
+    async function fetchData() {
+      try {
+        const response = await fetch("/getLastInvoice");
+        const json = await response.json();
+        setData(json);
+      } catch (error) {
+        toast.error(`Error: ${error}`, "icon-error");
+      }
+    }
   });
 
   const [lineItems, setLineItems] = useState({
     total: () => {
-      return this.items.reduce((acc, item, index) => {
+      return this.items.reduce((acc, item) => {
         return (acc += item.price);
       }, 0);
     },
