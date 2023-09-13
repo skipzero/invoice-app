@@ -19,6 +19,10 @@ export default function InvoiceForm({ client, setClient, lineItems, setLineItems
     toast.success("this ia a toast message", "icon-success");
   };
 
+  const addLineItem = () => {
+    setLineItems((lineItems) => [...lineItems, new LineItem()]);
+  };
+
   const handleLineItem = (evt) => {
     // const {}
   };

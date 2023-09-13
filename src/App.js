@@ -5,7 +5,7 @@ import "./App.css";
 
 function App() {
   useEffect(() => {
-    const fetchData = async () => {};
+    const response = fetch("/getLastInvoice");
   });
 
   const [lineItems, setLineItems] = useState({
@@ -42,7 +42,6 @@ function App() {
 
   return (
     <div>
-      App Test
       <InvoiceForm client={client} setClient={setClient} lineItem={lineItems} setLineItem={setLineItems} />
     </div>
   );

@@ -4,11 +4,11 @@ import mongoose from "mongoose";
 import InvoiceModel from "../models";
 
 // Get Invoice by user
-export const getInvoiceByClient = async (res, res) => {
-  const { client } = rew.query;
+export const getInvoiceByClient = async (req, res) => {
+  const { client } = req.query;
 
   try {
-    const invoice = await InvoiceModel.find({ client: client });
+    const invoice = await InvoiceModel.find({ client });
 
     res.status(200).json({ data: invoice });
   } catch (error) {
