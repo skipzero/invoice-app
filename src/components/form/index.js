@@ -1,5 +1,5 @@
 import Field from "../field/index.js";
-import LineItem from "../lineItems/index.js";
+import LineItems from "../lineItems/index.js";
 import toast, { Toaster } from "react-hot-toast";
 import { MDBRow, MDBCol, MDBContainer } from "mdb-react-ui-kit";
 import "./form.css";
