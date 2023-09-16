@@ -4,9 +4,13 @@ import "./lineItems.css";
 
 export default function LineItems(lineClient) {
   console.log("LINE+++", lineClient);
-  const { handleClient, lineProps } = lineClient;
-  const { quantity, price, description } = lineProps;
-  console.log("PROPS++", lineProps);
+  // const { handleClient, lineProps } = lineClient;
+  // const { quantity, price, description } = lineProps;
+  // console.log("PROPS++", lineProps);
 
-  return <MDBRow>{lineClient}</MDBRow>;
+  return (
+    <MDBRow>
+      <LineItem />
+    </MDBRow>
+  );
 }

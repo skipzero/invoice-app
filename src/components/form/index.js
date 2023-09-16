@@ -4,8 +4,8 @@ import toast, { Toaster } from "react-hot-toast";
 import { MDBRow, MDBCol, MDBContainer } from "mdb-react-ui-kit";
 import "./form.css";
 
-export default function InvoiceForm({ client, setClient, lineItems, setLineItems }) {
-  console.log("event-form", client);
+export default function InvoiceForm({ client, setClient, lineItem, setLineItem }) {
+  console.log("event-form", client, "-----\n" + lineItem);
 
   const handleClient = (evt) => {
     console.log("EVENT", evt);
@@ -19,9 +19,9 @@ export default function InvoiceForm({ client, setClient, lineItems, setLineItems
     toast.success("this ia a toast message", "icon-success");
   };
 
-  const handleLineItem = (evt) => {
-    // const {}
-  };
+  // const handleLineItem = (evt) => {
+  //   // const {}
+  // };
 
   const handleDate = (evt) => {
     // evt.preventDefault()
@@ -32,7 +32,7 @@ export default function InvoiceForm({ client, setClient, lineItems, setLineItems
     setClient((client) => ({
       ...client,
       date: today,
-      due: due,
+      due,
     }));
   };
   const handleSubmit = (e) => {
@@ -59,7 +59,7 @@ export default function InvoiceForm({ client, setClient, lineItems, setLineItems
             <MDBCol md="1">
               <Field fieldName="invoice" handleClient={handleClient} value={client.invoice} />
             </MDBCol>
-            <MDBCol md="9"></MDBCol>
+            <MDBCol md="9" />
             <MDBCol md="1" className="ms-auto">
               <Field fieldName="date" onChange={handleDate} value={client.date} />
             </MDBCol>
@@ -93,10 +93,10 @@ export default function InvoiceForm({ client, setClient, lineItems, setLineItems
             </div>
           </MDBRow>
           <MDBRow>
-            <LineItems />
+            <LineItems lineClient={lineItem} />
           </MDBRow>
           <div id="customer-lk">
-            <button value="Add Item"></button>
+            <button value="Add Item" />
           </div>
         </form>
       </MDBCol>

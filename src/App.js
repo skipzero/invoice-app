@@ -6,19 +6,23 @@ import "./App.css";
 
 function App() {
   const [data, setData] = useState([]);
+  const url = "/getLastInvoice";
   useEffect(() => {
-    async function fetchData() {
+    const fetchData = async () => {
       try {
-        const response = await fetch("/getLastInvoice");
+        const response = await fetch(url);
         const json = await response.json();
         setData(json);
       } catch (error) {
         toast.error(`Error: ${error}`, "icon-error");
       }
-    }
-  });
-
-  const [lineItems, setLineItems] = useState({
+    };
+    fetchData().then(() => {
+      console.log("Second fetcher thing....", data);
+    });
+  }, [data]);
+  console.log("LastInvoice....", data);
+  const [lineItem, setLineItem] = useState({
     total: () => {
       return this.items.reduce((acc, item) => {
         return (acc += item.price);
@@ -47,12 +51,13 @@ function App() {
     email: "",
     phone: "",
     notes: "",
-    lineItems,
+    lineItem,
   });
 
   return (
     <div>
-      <InvoiceForm client={client} setClient={setClient} lineItem={lineItems} setLineItem={setLineItems} />
+      <Toaster />
+      <InvoiceForm client={client} setClient={setClient} lineItem={lineItem} setLineItem={setLineItem} />
     </div>
   );
 }

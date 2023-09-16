@@ -18,6 +18,18 @@ export const getInvoiceByClient = async (req, res) => {
 };
 
 // Get All Invoices
+export const getLastInvoice = async (req, res) => {
+  try {
+    const lastInvoice = await InvoiceModel.find().limit(1).sort({ $natural: -1 });
+
+    res.status(200).json(allInvoices);
+  } catch (error) {
+    toast.error(`Error: ${error}`);
+    res.status(409).json({ message: error.message });
+  }
+};
+
+// Get All Invoices
 export const getInvoices = async (req, res) => {
   try {
     const allInvoices = await InvoiceModel.find().sort({ _id: -1 });
@@ -29,6 +41,7 @@ export const getInvoices = async (req, res) => {
   }
 };
 
+// Get Invoice by id
 export const getInvoice = async (req, res) => {
   const { id } = req.params;
 
@@ -67,4 +80,14 @@ export const updateInvoice = async (req, res) => {
   const updatedInvoice = await InvoiceModel.findByIdAndUpdate(_id, { ...invoice, _id }, { new: true });
 
   res.json(updatedInvoice);
+};
+
+// Delete Invoice
+
+export const deleteInvoice = async (req, res) => {
+  const { id: _id } = req.params;
+  if (!mongoose.Types.ObjectId.isValid(_id)) {
+    toast.error(`Error: ${error}`);
+    return readdirSync.status(404).send("No invoice with that id");
+  }
 };

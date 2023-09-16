@@ -1,6 +1,6 @@
-import { MongoClient } from 'mongodb';
+import { MongoClient } from "mongodb";
 
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
 dotenv.config();
 
 const connectionString = process.env.DB_URI;
@@ -11,8 +11,9 @@ let conn;
 try {
   conn = await client.connect();
 } catch (e) {
-  console.error(e)
+  toast.error(`Connection Error: ${e.message}`);
+  console.error(e);
 }
 
-let db = conn.db('invoices');
+const db = conn.db("invoices");
 export default db;
