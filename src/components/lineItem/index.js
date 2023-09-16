@@ -1,43 +1,36 @@
-import './lineItem.css';
+import { MDBCol } from 'mdb-react-ui-kit'
 
-export default function LineItem (client) {
-  const {handleClient, } = client;
+import './lineItem.css'
 
+const LineItem = (lineClient) => {
+  const { description, quantity, price, handleClient } = lineClient
   return (
     <>
-    <div className="control-group line-item">
-      <div className="col-md-1">
-        quantity
-      </div>
-      <div className="col-md-3">
-        title
-      </div>
-      <div className="col-md-7">
-        description
-      </div>
-      <div className="col-md-1">
-        price
-      </div>
-    </div>
-    <div className="control-group line-item">
-      <div className="col-md-1">
-        <input type="number" value={client.quantity} handleClient={handleClient} className="form-control quantity" />
-      </div>
-      <div className="col-md-3" >
-        <input type="text" value={client.title} handleClient={handleClient} className="form-control title" placeholder="title"/>
-      </div>
-      <div className="col-md-6">
-        <input type="text" value={client.desc} handleClient={handleClient} className="form-control desc" placeholder="description" />
-      </div>
-      <div className="col-md-1">
-        <input type="number" value={client.price} handleClient={handleClient} className="form-control amount" />
-      </div>
-      <div className="button-group" >
-        <button type="button">
+      <MDBCol md='1'>
+        <input type='number' value={quantity} handleClient={handleClient} id='quantity' className='form-control quantity' />
+        <label htmlFor='quantity' className='form-label'>
+          quantity
+        </label>
+      </MDBCol>
+      <MDBCol md='8'>
+        <input type='text' value={description} handleClient={handleClient} id='description' className='form-control desc' />
+        <label htmlFor='description' className='form-label'>
+          description
+        </label>
+      </MDBCol>
+      <MDBCol md='2'>
+        <input type='number' value={price} handleClient={handleClient} id='price' className='form-control amount' />
+        <label htmlFor='price' className='form-label'>
+          price
+        </label>
+      </MDBCol>
+      <MDBCol md='1'>
+        <button type='button' className='form-control remove'>
           X
         </button>
-      </div>
-    </div>
+      </MDBCol>
     </>
   )
 }
+
+export default LineItem
