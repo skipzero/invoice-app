@@ -16,11 +16,20 @@ router.get("/", async (req, res) => {
 // find invoices by client
 router.get("/:client", async (req, res) => {
   let collection = await db.collection("invoices");
-  let query = { client: ObjectId(req.params.client) };
+  let query = { client: req.params.client };
   let results = await collection.find(query).toArray();
 
   if (!results) res.send("Not Found").status(404);
   else res.send(results).status(200);
+});
+
+// find invoice by ID
+router.get("/:id", async (req, res) => {
+  let collection = await db.collection("invoices");
+  let query = { id: ObjectId(req.params.id) };
+  let result = await collection.find(query);
+
+  res.send(result).status(200);
 });
 
 // Create new Invoice
