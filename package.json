@@ -14,7 +14,7 @@
     "express-async-errors": "^3.1.1",
     "mdb-react-ui-kit": "^6.2.0",
     "mocha": "^10.2.0",
-    "mongoose": "^7.4.5",
+    "mongoose": "^7.6.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
