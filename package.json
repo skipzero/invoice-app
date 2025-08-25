@@ -5,7 +5,7 @@
   "type": "module",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^7.0.0",
-    "@types/node": "^20.11.1",
+    "@types/node": "^24.3.0",
     "chia": "^0.0.1",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
